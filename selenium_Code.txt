@@ -1,0 +1,49 @@
+
+package Akshat.Axis_Bank;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Final
+{
+
+	public static void main(String args[]) throws InterruptedException
+	{
+	  WebDriver w=new ChromeDriver();
+	  System.out.println("Open chromeDriver successfully");
+	  w.navigate().to("https://testautomationpractice.blogspot.com/");//1.Launch the website.
+	  System.out.println("Launch the website successfully");
+	  w.manage().window().maximize();//maximize window
+	  
+	  WebElement nameField = w.findElement(By.id("name"));//// 2.Enter name
+      nameField.sendKeys("GROUP TASK");
+      nameField.clear();//Clear the name
+      nameField.sendKeys("GROUP-4");// Enter the new name
+      System.out.println("Name: " + nameField.getAttribute("value"));//Print the value of name
+      
+      WebElement emailField = w.findElement(By.id("email"));//3.Enter Email
+      emailField.sendKeys("group04@.com");
+      emailField.clear();//Clear the email
+      emailField.sendKeys("group004@.com");// enter the new email
+      System.out.println("Email: " + emailField.getAttribute("value"));//Print the value of email.
+      
+      WebElement phoneField = w.findElement(By.id("phone"));//4.Enter Phone Number
+      phoneField.sendKeys("9579854441");
+      System.out.println("Phone: " + phoneField.getAttribute("value"));//Print the value of the phone 
+      
+   
+	  Select select= new Select(w.findElement(By.xpath("//*[@id=\"country\"]")));////Select any country
+	  select.selectByIndex(9);
+	  //select.selectByVisibleText("India");//Different methods
+	  //select.selectByValue("India");
+	  System.out.println("Country Selection has successfully");
+	  
+	  Select select1= new Select(w.findElement(By.xpath("//*[@id=\"colors\"]")));////Select any colors
+	  select1.selectByVisibleText("Red");
+      System.out.println("Red color Selection has successfully");
+	  
+	}
+
+}

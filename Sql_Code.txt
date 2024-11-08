@@ -1,0 +1,53 @@
+-- Creating the Customer_Details table
+CREATE TABLE Customer_Details (
+    Customer_id INT,
+    Customer_name CHAR(20),
+    state CHAR(20),
+    credit_limit INT,
+    balance INT,
+    applicable CHAR(10),
+    cvv INT,
+    expiry_date DATE,
+    kyc_status CHAR(10)
+);
+
+-- Inserting values into the Customer_Details table
+INSERT INTO Customer_Details (Customer_id, Customer_name, state, credit_limit, balance, applicable, cvv, expiry_date, kyc_status) VALUES
+(1, 'Ramesh', 'Maharashtra', 50000, 2000, 'Yes', 123, '2025-08-31', 'Verified'),
+(2, 'Suresh', 'Karnataka', 45000, 3000, 'No', 456, '2026-02-28', 'Pending'),
+(3, 'Mohan', 'Delhi', 60000, 1000, 'Yes', 789, '2024-12-15', 'Verified'),
+(4, 'Geeta', 'Tamil Nadu', 55000, 4000, 'No', 234, '2026-07-10', 'Verified'),
+(5, 'Meena', 'West Bengal', 52000, 1500, 'Yes', 567, '2025-04-20', 'Pending'),
+(6, 'Rajesh', 'Gujarat', 48000, 2500, 'No', 890, '2027-11-30', 'Verified'),
+(7, 'Arjun', 'Punjab', 53000, 500, 'Yes', 345, '2026-06-05', 'Pending'),
+(8, 'Leela', 'Kerala', 47000, 3500, 'No', 678, '2025-09-25', 'Verified'),
+(9, 'Karan', 'Rajasthan', 5000, 6000, 'Yes', 901, '2026-08-18', 'Verified'),
+(10, 'Anita', 'Bihar', 9000, 400, 'No', 123, '2027-03-15', 'Pending'),
+(11, 'Deepa', 'Assam', 51000, 2000, 'Yes', 456, '2025-05-30', 'Verified'),
+(12, 'Sunil', 'Odisha', 62000, 3500, 'No', 789, '2026-01-10', 'Verified'),
+(13, 'Kavita', 'Goa', 64000, 2500, 'Yes', 234, '2024-11-22', 'Pending'),
+(14, 'Rahul', 'Haryana', 59000, 1500, 'No', 567, '2025-12-14', 'Verified'),
+(15, 'Priya', 'Jharkhand', 45000, 4000, 'Yes', 890, '2026-03-08', 'Pending'),
+(16, 'Vikram', 'Madhya Pradesh', 48000, 1000, 'No', 345, '2027-05-06', 'Verified'),
+(17, 'Sheetal', 'Uttar Pradesh', 53000, 5000, 'Yes', 678, '2025-10-11', 'Verified'),
+(18, 'Amit', 'Chhattisgarh', 46000, 300, 'No', 901, '2026-09-09', 'Pending'),
+(19, 'Jyoti', 'Uttarakhand', 52000, 4500, 'Yes', 123, '2024-08-17', 'Verified'),
+(20, 'Nitin', 'Andhra Pradesh', 57000, 2500, 'No', 456, '2026-07-21', 'Verified');
+
+-- Query to retrieve all records
+SELECT * FROM Customer_Details;
+
+-- Query 1: Select records where KYC status is 'Verified'
+SELECT * FROM Customer_Details WHERE kyc_status = 'Verified';
+
+-- Query 2: Sum of balances where KYC status is 'Verified'
+SELECT SUM(balance) AS Total_Amount FROM Customer_Details WHERE kyc_status = 'Verified';
+
+-- Query 3: Average balance per state
+SELECT state, ROUND(AVG(balance), 2) AS avg_balance FROM Customer_Details GROUP BY state;
+
+-- Query 4: Select customer names with a credit limit greater than 45000
+SELECT customer_name FROM Customer_Details WHERE credit_limit > 45000;
+
+-- Query 5: Select customer names with a credit limit greater than 45000 and an expiry date after '2025-01-01'
+SELECT customer_name FROM Customer_Details WHERE expiry_date > '2025-01-01' AND credit_limit > 45000;
